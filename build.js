@@ -13,7 +13,9 @@
         "d3",
         "text",
         "text!components/app/app/app.html",
-        "components/app/app/app"
+        "components/app/app/app",
+        "text!components/app/search/search.html",
+        "components/app/search/search"
     ],
     insertRequire: ["core/startup"],
     mainConfigFile: "app/core/require.config.js",
