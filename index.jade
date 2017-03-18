@@ -1,0 +1,12 @@
+doctype html
+html
+    head
+        title Some Clever Title
+        link(rel="stylesheet",href="styles/app.css")
+        if environment == "prod"
+            script(src="scripts/app.min.js")
+        else
+            script(src="app/core/require.config.js")
+            script(src="bower_components/requirejs/require.js",data-main="core/startup")
+        body(data-bind="attr:{class: theme}")
+            div(data-bind="component: 'app-app'")

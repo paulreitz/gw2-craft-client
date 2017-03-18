@@ -1,0 +1,37 @@
+@import "./themes/default";
+@import "../components/components";
+
+body,html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.theme(@theme: default) {
+    @background-dark: "@{theme}-background-dark";
+    @background-light: "@{theme}-background-light";
+    @text-dark: "@{theme}-text-dark";
+    @text-light: "@{theme}-text-light";
+
+    .@{theme} & {
+        .dark-background {
+            background-color: @@background-dark;
+        }
+
+        .light-background {
+            background-color: @@background-light;
+        }
+
+        .dark-text {
+            color: @@text-dark;
+        }
+
+        .light-text {
+            color: @@text-light;
+        }
+
+        
+    }
+}
+.theme();

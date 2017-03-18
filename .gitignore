@@ -1,0 +1,9 @@
+node_modules/
+bower_components/
+dist/
+**/*.js
+styles/
+index.html
+!build.js
+!gulpfile.js
+!app/core/require.config.js

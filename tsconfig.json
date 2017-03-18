@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "amd"
+    },
+    "exclude": [
+        "node_modules",
+        "bower_components"
+    ],
+    "fileGlogs": [
+        "./**/*.ts"
+    ]
+}
