@@ -1,0 +1,19 @@
+<div id="app-search">
+    <span data-bind="text: filterLabel"></span>
+    <div class="option-container">
+        <span data-bind="text: typeLabel"></span>
+        <select data-bind="options: types, optionsText: 'type', value: type"></select>
+    </div>
+    <div class="option-container">
+        <span data-bind="text: subTypeLabel"></span>
+        <select data-bind="options: subTypes, optionsText: 'type', value: subType"></select>
+    </div>
+    <div class="option-container">
+        <span data-bind="text: rarityLabel"></span>
+        <select data-bind="options: rarities, optionsText: 'rarity', value: rarity"></select>
+    </div>
+    <div class="option-container">
+        <span data-bind="text: levelLabel"></span>
+        <select data-bind="options: levels, value: level"></select>
+    </div>
+</div>

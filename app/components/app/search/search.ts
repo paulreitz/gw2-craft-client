@@ -13,6 +13,12 @@ class SearchPanelViewModel {
     rarity = ko.observable<{rarity: string, value: number}>();
     level = ko.observable<number>();
 
+    filterLabel = ko.observable<string>("Filters");
+    typeLabel = ko.observable<string>("Type");
+    subTypeLabel = ko.observable<string>("Subtype");
+    rarityLabel = ko.observable<string>("Rarity");
+    levelLabel = ko.observable<string>("Minimum Level");
+
     constructor() {
         var baseTypes: Array<string> = ["Armor","Back","Bag","Consumable","Container","CraftingMaterial","Gathering","Gizmo","Trinket","Trophy","UpgradeComponent","Weapon"];
         var baseRarities: Array<string> = ["Junk","Basic","Fine","Masterwork","Rare","Exotic","Ascended","Legendary"];
@@ -21,12 +27,14 @@ class SearchPanelViewModel {
         baseTypes.forEach((type:string, index:number) => {
             typesArray.push({type: type, value: index});
         });
+        typesArray.unshift({type: "All", value: -1});
         this.types(typesArray);
 
         var raritiesArray:Array<{rarity: string, value: number}> = [];
         baseRarities.forEach((rarity: string, index: number) => {
             raritiesArray.push({rarity: rarity, value: index});
         });
+        raritiesArray.unshift({rarity: "All", value: -1});
         this.rarities(raritiesArray);
 
         var levelsArray: Array<number> = [];
