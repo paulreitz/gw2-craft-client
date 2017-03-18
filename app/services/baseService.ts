@@ -1,9 +1,10 @@
 import $ = require("jquery");
+import Config = require("../core/config");
 
 "use strict";
 
 class BaseService {
-    protected static baseUrl:string = "http://localhost:1337/api/";
+    protected static baseUrl:string = Config.SERVER_URI;
 
     protected static ajax<T>(url: string, method: string): JQueryPromise<T> {
         var deferred = $.Deferred();

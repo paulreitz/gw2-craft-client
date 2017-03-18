@@ -3,4 +3,6 @@ export interface ISearchParams {
     subType?:number;
     rarity?:number;
     min_level?:number;
+    page?:number;
+    limit?:number;
 }

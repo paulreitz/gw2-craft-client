@@ -1,5 +1,8 @@
 import ko = require("knockout");
 import SubTypes = require("./subtypes");
+import AppManager = require("../manager");
+
+import {ISearchParams} from "../../../interfaces/ISearchParams";
 
 "use strict";
 
@@ -18,6 +21,7 @@ class SearchPanelViewModel {
     subTypeLabel = ko.observable<string>("Subtype");
     rarityLabel = ko.observable<string>("Rarity");
     levelLabel = ko.observable<string>("Minimum Level");
+    searchText = ko.observable<string>("Search");
 
     constructor() {
         var baseTypes: Array<string> = ["Armor","Back","Bag","Consumable","Container","CraftingMaterial","Gathering","Gizmo","Trinket","Trophy","UpgradeComponent","Weapon"];
@@ -52,6 +56,28 @@ class SearchPanelViewModel {
         subtypes.unshift({type: "All", value: -1});
         return subtypes;
     });
+
+    onSearch = (e) => {
+        var params:ISearchParams = {};
+        if (this.type().value > -1) {
+            params.type = this.type().value;
+        }
+        if (this.subType().value > -1) {
+            params.subType = this.subType().value;
+        }
+        if (this.rarity().value > -1) {
+            params.rarity = this.rarity().value;
+        }
+        params.min_level = this.level();
+        params.page = 1;
+        params.limit = 10;
+        AppManager.doSearch(params).done((result) => {
+            console.log(result);
+        })
+        .fail((err) => {
+            console.log(err);
+        })
+    }
 }
 
 export = SearchPanelViewModel;

@@ -23,6 +23,12 @@ class SearchService extends BaseService {
         if (!isNaN(params.min_level)) {
             paramList.push("min_level=" + params.min_level.toString(10));
         }
+        if (!isNaN(params.page)) {
+            paramList.push("page=" + params.page.toString(10));
+        }
+        if (!isNaN(params.limit)) {
+            paramList.push("limit=" + params.limit.toString(10));
+        }
 
         var uri = this.endpoint;
         if (paramList.length) {
