@@ -1,12 +1,12 @@
 {
   "name": "gw2-craft-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "The web front end for the GW2 crafting utility",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Paul Reitz",
   "license": "ISC",
   "devDependencies": {
     "@types/d3": "^4.7.0",
