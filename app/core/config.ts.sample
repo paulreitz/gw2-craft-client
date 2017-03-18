@@ -1,0 +1,10 @@
+
+
+"use strict";
+
+class Config {
+    public static SERVER_URI:string = "http://path/to/server";
+    public static CORS_KEY:string = "cross origin key";
+}
+
+export = Config;

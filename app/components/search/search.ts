@@ -1,4 +1,5 @@
 import ko = require("knockout");
+import SubTypes = require("./subtypes");
 
 "use strict";
 
@@ -36,7 +37,12 @@ class SearchPanelViewModel {
     }
 
     subTypes = ko.pureComputed<Array<{type:string, value: number}>>(() => {
-        return [];
+        var subtypes:Array<{type:string, value: number}> = [];
+        if (this.type()) {
+            subtypes = SubTypes.subTypes[this.type().type] || [];
+        }
+        subtypes.unshift({type: "All", value: -1});
+        return subtypes;
     });
 }
 

@@ -7,3 +7,4 @@ index.html
 !build.js
 !gulpfile.js
 !app/core/require.config.js
+app/core/config.ts
