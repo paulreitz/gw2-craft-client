@@ -9,15 +9,16 @@ import {IItemSearchResults} from "../../interfaces/ISearchResults";
 class AppManager {
     public static theme = ko.observable<string>("default");
 
-    private static searchParams:ISearchParams;
+    public static searchParams = ko.observable<ISearchParams>({});
 
     public static results = ko.observable<IItemSearchResults>({total: 0, results: []});
     public static isSearching = ko.observable<boolean>(false);
+    public static limit = ko.observable<number>(10);
 
     public static doSearch(params?:ISearchParams): JQueryPromise<IItemSearchResults> {
         this.isSearching(true);
         var deferred = $.Deferred<IItemSearchResults>();
-        this.searchParams = params;
+        this.searchParams(params);
         SearchService.itemSearch(params)
             .done((results:IItemSearchResults) => {
                 this.results(results);
@@ -29,6 +30,11 @@ class AppManager {
                 deferred.fail(error);
             })
         return deferred.promise();
+    }
+
+    public static getPage():number {
+        var page = this.searchParams() && this.searchParams().page;
+        return page || 1;
     }
 }
 

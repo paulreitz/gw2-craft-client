@@ -14,6 +14,8 @@
         "text",
         "text!components/app/app/app.html",
         "components/app/app/app",
+        "text!components/app/paging/paging.html",
+        "components/app/paging/paging",
         "text!components/app/results/results.html",
         "components/app/results/results",
         "text!components/app/search/search.html",

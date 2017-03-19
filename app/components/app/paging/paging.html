@@ -1,0 +1,33 @@
+<div id="app-paging">
+    <div class="pager">
+        <!-- ko if: showPaging -->
+            <!-- ko if: isFirstPage -->
+            <span class="page-number">&lt;&lt;</span>
+            <span class="page-number">&lt;</span>
+            <!-- /ko --> <!-- /if first page -->
+            <!-- ko if: !isFirstPage() -->
+            <span class="page-number page-selector dark-link-text" data-bind="click: function(e) { firstPage(); }">&lt;&lt;</span>
+            <span class="page-number page-selector dark-link-text" data-bind="click: function(e) { previousPage(); }">&lt;</span>
+            <!-- /ko --> <!-- /if not first page -->
+            <!-- ko foreach: { data: pageArray, as: 'page'} -->
+                <!-- ko if: $parent.isCurrentPage(page) -->
+                <span class="page-number" data-bind="text: page"></span>
+                <!-- /ko --> <!-- /if current page -->
+                <!-- ko if: !$parent.isCurrentPage(page) -->
+                <span class="page-number page-selector dark-link-text" data-bind="text: page, click: function(e) { $parent.pageSelected(page); }"></span>
+                <!-- /ko --> <!-- /if not current page -->
+            <!-- /ko --> <!-- /foreach page -->
+            <!-- ko if: isLastPage --> 
+            <span class="page-number">&gt;</span>
+            <span class="page-number">&gt;&gt;</span>
+            <!-- /ko --> <!-- /if last page -->
+            <!-- ko if: !isLastPage() --> 
+            <span class="page-number page-selector dark-link-text" data-bind="click: function(e) { nextPage(); }">&gt;</span>
+            <span class="page-number page-selector dark-link-text" data-bind="click: function(e) { lastPage(); }">&gt;&gt;</span>
+            <!-- /ko --> <!-- /if not last page -->
+        <!-- /ko --> <!-- /if show paging -->
+    </div>
+    <div class="items">
+        <span data-bind="text: itemsLabel"></span>
+    </div>
+</div>

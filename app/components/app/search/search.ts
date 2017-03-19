@@ -70,9 +70,9 @@ class SearchPanelViewModel {
         }
         params.min_level = this.level();
         params.page = 1;
-        params.limit = 10;
+        params.limit = AppManager.limit();
         AppManager.doSearch(params).done((result) => {
-            console.log(result);
+            // console.log(result);
         })
         .fail((err) => {
             console.log(err);
