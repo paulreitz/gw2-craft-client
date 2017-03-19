@@ -6,10 +6,13 @@ body,html {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .theme(@theme: default) {
     @background-dark: "@{theme}-background-dark";
+    @background-medium: "@{theme}-background-medium";
     @background-light: "@{theme}-background-light";
     @text-dark: "@{theme}-text-dark";
     @text-light: "@{theme}-text-light";
@@ -37,7 +40,31 @@ body,html {
             background-color: @@background-dark;
             color: @@text-light;
         }
+
+        .spinner {
+            border-radius: 50%;
+            animation: spinner 2s linear infinite;
+        }
+
+        .spinner-dark {
+            position: relative;
+            top: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            border: 16px solid @@background-medium;
+            border-top: 16px solid @@background-dark;
+        }
+
+        .spinner-large {
+            width: 120px;
+            height: 120px;
+        }
         
     }
 }
 .theme();
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

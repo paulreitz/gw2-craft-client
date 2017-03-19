@@ -11,17 +11,21 @@ class AppManager {
 
     private static searchParams:ISearchParams;
 
-    public static results:IItemSearchResults = {total: 0, results: []};
+    public static results = ko.observable<IItemSearchResults>({total: 0, results: []});
+    public static isSearching = ko.observable<boolean>(false);
 
     public static doSearch(params?:ISearchParams): JQueryPromise<IItemSearchResults> {
+        this.isSearching(true);
         var deferred = $.Deferred<IItemSearchResults>();
         this.searchParams = params;
         SearchService.itemSearch(params)
             .done((results:IItemSearchResults) => {
-                this.results = results;
+                this.results(results);
+                this.isSearching(false);
                 deferred.resolve(results);
             })
             .fail((error) => {
+                this.isSearching(false);
                 deferred.fail(error);
             })
         return deferred.promise();

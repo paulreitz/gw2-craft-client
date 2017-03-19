@@ -1,0 +1,21 @@
+<div id="app-results" class="light-background">
+    <!-- ko if: isSearching() -->
+    <div class="spinner-container">
+        <div class="spinner spinner-dark spinner-large"></div>
+    </div>
+    <!-- /ko --> <!-- /if isSearching -->
+    <!-- ko if: !isSearching() -->
+        <!-- ko if: results().results && results().results.length -->
+        <div class="results-container">
+            <!-- ko foreach: {data: results().results, as: 'result' } -->
+            <div class="result" data-bind="component: { name: 'app-tile', params: result}"></div>
+            <!-- /ko --><!-- /foreach result -->
+        </div>
+        <!-- /ko --><!-- /if results.length -->
+        <!-- ko if: (!results().results || !results().results.length) -->
+        <div class="no-results-container">
+            <span class="no-results dark-text" data-bind="text: noResults"></span>
+        </div>
+        <!-- /ko --><!-- /if no results -->
+    <!-- /ko --><!-- /if !isSearching -->
+</div>

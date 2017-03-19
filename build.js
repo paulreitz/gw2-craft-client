@@ -14,8 +14,12 @@
         "text",
         "text!components/app/app/app.html",
         "components/app/app/app",
+        "text!components/app/results/results.html",
+        "components/app/results/results",
         "text!components/app/search/search.html",
-        "components/app/search/search"
+        "components/app/search/search",
+        "text!components/app/tile/tile.html",
+        "components/app/tile/tile"
     ],
     insertRequire: ["core/startup"],
     mainConfigFile: "app/core/require.config.js",
