@@ -1,7 +1,6 @@
 import ko = require("knockout");
 import MainAppViewModel = require("../components/app/main");
 
-console.log("start up");
 
 var gwLoader = {
     getConfig(name:string, callBack:(model:Object) => void) {

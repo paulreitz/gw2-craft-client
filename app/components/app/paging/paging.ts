@@ -43,10 +43,9 @@ class PagingViewModel {
         var page = AppManager.getPage();
         if (!isSearching && results) {
             var totalPages = Math.ceil(results.total / AppManager.limit());
-            var lowerPage = (Math.floor(page / this.pageLimit)) * this.pageLimit + 1;
+            // var lowerPage = (Math.floor(page / this.pageLimit)) * this.pageLimit + 1;
             var upperPage = (Math.ceil(page / this.pageLimit)) * this.pageLimit;
-            console.log(lowerPage + " - " + upperPage);
-            lowerPage = (upperPage < lowerPage)? lowerPage - this.pageLimit : lowerPage;
+            var lowerPage = upperPage - (this.pageLimit - 1);
             upperPage = (upperPage < totalPages)? upperPage : totalPages;
             for (var i = lowerPage; i <= upperPage; i++) {
                 pages.push(i);
@@ -108,6 +107,7 @@ class PagingViewModel {
             page++;
             page = (page < totalPages)? page : totalPages;
             var params:ISearchParams = AppManager.searchParams();
+            params.page = page;
             AppManager.doSearch(params);
         }
     }
