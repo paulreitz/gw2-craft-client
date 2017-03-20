@@ -5,7 +5,7 @@
     </div>
     <!-- /ko --> <!-- /if is searching -->
     <!-- ko if: !isSearching() -->
-
+    <div class="recipe-tree" data-bind="component: 'recipe-tree'"></div>
     <div class="recipe-list" data-bind="component: 'recipe-list'"></div>
     <!-- /ko --> <!-- /if not searching -->
     <span class="close" data-bind="click: function(e) { onClose(); }">X</span>

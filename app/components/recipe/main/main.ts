@@ -10,7 +10,6 @@ class MainViewModel {
     isSearching = RecipeManager.isSearching;
 
     constructor() {
-        console.log("new Main View Model");
         this.isSearching(true);
         var id = AppManager.recipeId();
         RecipeManager.doSearch(id)
