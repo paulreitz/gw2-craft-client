@@ -17,7 +17,7 @@ class AppManager {
     public static limit = ko.observable<number>(10);
 
     public static tree = ko.observable<Tree>(null);
-    public static recipeId = ko.observable<number>(77193);
+    public static recipeId = ko.observable<number>(0);
 
     public static doSearch(params?:ISearchParams): JQueryPromise<IItemSearchResults> {
         this.isSearching(true);

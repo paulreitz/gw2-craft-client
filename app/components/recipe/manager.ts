@@ -8,7 +8,7 @@ import {INode, IRecipeTree} from "../../interfaces/IRecipe";
 
 class RecipeManager {
     private static treeData: IRecipeTree;
-    public static showWindow = ko.observable<boolean>(true);
+    public static showWindow = ko.observable<boolean>(false);
     public static isSearching = ko.observable<boolean>(false);
 
     public static doSearch(id:number):JQueryPromise<IRecipeTree> {
