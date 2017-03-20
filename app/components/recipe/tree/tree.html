@@ -1,3 +1,8 @@
 <div id="recipe-tree">
-    <div id="tree-container"></div>
+    <div id="tree-container" data-bind="event: {
+        mousedown: function(d, e) { onMouseDown(d, e); },
+        mouseup: function(d, e) { onMouseUp(d, e); },
+        mousemove: function(d, e) { onMouseMove(d, e); },
+        mouseout: function(d, e) { onMouseOut(d, e); }
+    }"></div>
 </div>

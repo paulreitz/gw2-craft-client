@@ -7,12 +7,20 @@ import RecipeManager = require("../manager");
 
 class TreeViewModel {
 
+    lastScrollLeft:number;
+    lastScrollTop:number;
+    lastMouseX:number;
+    lastMouseY:number;
+    isMoving:boolean = false;
+
     constructor() {
         this.buildTree();
     }
 
     buildTree() {
         var tree = AppManager.tree();
+        var topNode:number;
+        var viewPort:number = $("#recipe-tree").width()/2;
         if (tree) {
             var items = tree.getBaseMaterials();
             var width: number = 0;
@@ -22,6 +30,8 @@ class TreeViewModel {
             width = width || 1;
             width *= 80;
             var height = tree.getDepth() * 80;
+            $("#tree-container").width(width);
+            $("#tree-container").height(height);
 
             var data = tree.getTreeData();
 
@@ -52,7 +62,10 @@ class TreeViewModel {
             var node = g.selectAll(".node")
                 .data(nodes.descendants())
                 .enter().append("g")
-                .attr("class", (d) => {
+                .attr("class", (d:any) => {
+                    if (!d.parent) {
+                        topNode = d.x;
+                    }
                     return "node" + (d.children? " node-internal" : " node-leaf");
                 })
                 .attr("transform", (d:any) => {
@@ -65,6 +78,42 @@ class TreeViewModel {
                 .attr("width", 32)
                 .attr("height", 32)
                 .attr("xlink:href", (d:any) => { return d.data.icon; });
+
+            node.append("text")
+                .attr("dy", ".35em")
+                .attr("y", 38)
+                .style("text-anchor", "middle")
+                .attr("class", "dark-text")
+                .text((d:any) => { return d.data.name.replace("&lsquo;", "'"); });
+
+            $(".recipe-tree").scrollLeft(topNode - viewPort);
+        }
+    }
+
+    onMouseUp = (d, e) => {
+        this.isMoving = false;
+    }
+
+    onMouseDown = (d, e) => {
+        this.isMoving = true;
+        this.lastScrollLeft = $(".recipe-tree").scrollLeft();
+        this.lastScrollTop = $(".recipe-tree").scrollTop();
+        this.lastMouseX = e.offsetX;
+        this.lastMouseY = e.offsetY;
+    }
+
+    onMouseOut = (d, e) => {
+        if (this.isMoving) {
+            this.isMoving = false;
+        }
+    }
+
+    onMouseMove = (d, e) => {
+        if (this.isMoving) {
+            var diffX = this.lastMouseX - e.offsetX;
+            var diffY = this.lastMouseY - e.offsetY;
+            $(".recipe-tree").scrollLeft(this.lastScrollLeft + diffX);
+            $(".recipe-tree").scrollTop(this.lastScrollTop + diffY);
         }
     }
 }
