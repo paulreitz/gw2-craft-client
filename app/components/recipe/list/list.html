@@ -1,0 +1,12 @@
+<div id="recipe-list">
+    <ul>
+        <!-- ko foreach: { data: itemList, as: 'item'} -->
+        <li>
+            <img data-bind="attr: {src: item.icon}"/>
+            <span data-bind="text: item.name"></span>
+            <span> - </span>
+            <span data-bind="text: item.count"></span>
+        </li>
+        <!-- /ko -->
+    </ul>
+</div>

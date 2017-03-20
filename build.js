@@ -21,7 +21,13 @@
         "text!components/app/search/search.html",
         "components/app/search/search",
         "text!components/app/tile/tile.html",
-        "components/app/tile/tile"
+        "components/app/tile/tile",
+        "text!components/recipe/list/list.html",
+        "components/recipe/list/list",
+        "text!components/recipe/main/main.html",
+        "components/recipe/main/main",
+        "text!components/recipe/tree/tree.html",
+        "components/recipe/tree/tree"
     ],
     insertRequire: ["core/startup"],
     mainConfigFile: "app/core/require.config.js",

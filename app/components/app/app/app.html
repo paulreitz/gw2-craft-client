@@ -6,4 +6,7 @@
     <div class="search-panel" data-bind="component: 'app-search'"></div>
     <div class="search-results" data-bind="component: 'app-results'"></div>
     <div class="paging" data-bind="component: 'app-paging'"></div>
+    <!-- ko if: showRecipe -->
+    <div data-bind="component: 'recipe-main'"></div>
+    <!-- /ko --> <!-- /if show recipe -->
 </div>

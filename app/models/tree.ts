@@ -18,7 +18,7 @@ class Tree {
     }
 
     public getBaseMaterials(): {[key: string]: {id: number, count: number}} {
-        var items: {[key: string]: {id: number, count: number}};
+        var items: {[key: string]: {id: number, count: number}} = {};
         this.root.getBaseMaterials(items);
         return items;
     }

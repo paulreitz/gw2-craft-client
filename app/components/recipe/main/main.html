@@ -1,0 +1,12 @@
+<div id="recipe-main" class="light-background">
+    <!-- ko if: isSearching() -->
+    <div class="spinner-container">
+        <div class="spinner spinner-dark spinner-large"></div>
+    </div>
+    <!-- /ko --> <!-- /if is searching -->
+    <!-- ko if: !isSearching() -->
+
+    <div class="recipe-list" data-bind="component: 'recipe-list'"></div>
+    <!-- /ko --> <!-- /if not searching -->
+    <span class="close" data-bind="click: function(e) { onClose(); }">X</span>
+</div>
