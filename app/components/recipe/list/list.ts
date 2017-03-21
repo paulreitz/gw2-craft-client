@@ -17,7 +17,7 @@ class ListViewModel {
         var items = AppManager.tree().getBaseMaterials();
         for (var key in items) {
             var item = RecipeManager.getItem(items[key].id);
-            var itemEntry = {name: item.name, icon: item.icon, count: items[key].count};
+            var itemEntry = {name: item.name.replace("&lsquo;", "'"), icon: item.icon, count: items[key].count};
             itemsArray.push(itemEntry);
         }
         this.itemList(itemsArray);
