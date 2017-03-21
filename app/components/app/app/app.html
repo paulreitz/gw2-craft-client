@@ -1,7 +1,9 @@
 <div id="app-app">
     <header class="dark-background light-text">
-        <span data-bind="text:title"></span>
-        <nav></nav>
+        <span class="title" data-bind="text:title"></span>
+        <nav>
+            <span class="info-link medium-dark-border">?</span>
+        </nav>
     </header>
     <div class="search-panel" data-bind="component: 'app-search'"></div>
     <div class="search-results" data-bind="component: 'app-results'"></div>
