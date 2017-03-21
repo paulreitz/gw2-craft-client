@@ -73,7 +73,6 @@ class TreeNode {
         count++;
         if (this.children && this.children.length) {
             var innerCount:number = 0;
-            var i = 0;
             this.children.forEach((child) => {
                 var i = child.getDepth(count);
                 if (i > innerCount) {
