@@ -2,6 +2,7 @@ import ko = require("knockout");
 import d3 = require("d3");
 import AppManager = require("../../app/manager");
 import RecipeManager = require("../manager");
+import Constants = require("../../../core/constants");
 
 "use strict";
 
@@ -12,6 +13,8 @@ class TreeViewModel {
     lastMouseX:number;
     lastMouseY:number;
     isMoving:boolean = false;
+
+    
 
     constructor() {
         this.buildTree();
@@ -24,11 +27,16 @@ class TreeViewModel {
         if (tree) {
             var items = tree.getBaseMaterials();
             var width: number = 0;
+            var widthAdjust: number = 1;
             for (var i in items) {
                 width += items[i].count;
+                var adj = RecipeManager.getItem(items[i].id).name.length * 8 + 60;
+                if (adj > widthAdjust) {
+                    widthAdjust = adj;
+                }
             }
             width = width || 1;
-            width *= 80;
+            width *= widthAdjust;
             var height = tree.getDepth() * 80;
             $("#tree-container").width(width);
             $("#tree-container").height(height);
@@ -72,17 +80,26 @@ class TreeViewModel {
                     return "translate(" + d.x + "," + d.y + ")";
                 });
 
-            node.append("svg:image")
-                .attr("x", -16)
+            node.append("rect")
+                .attr("x", (d:any) => { return d.data.width / 2 * -1;})
                 .attr("y", 0)
+                .attr("width", (d:any) => { return d.data.width; })
+                .attr("height", 34)
+                .attr("style", (d:any) => {
+                    return "fill:white;stroke-width:3;stroke:" + (Constants.rarityColors[d.data.rarity] || "black");
+                });
+            
+            node.append("svg:image")
+                .attr("x", (d:any) => { return d.data.width / 2 * -1; })
+                .attr("y", 1)
                 .attr("width", 32)
                 .attr("height", 32)
                 .attr("xlink:href", (d:any) => { return d.data.icon; });
 
             node.append("text")
-                .attr("dy", ".35em")
-                .attr("y", 38)
-                .style("text-anchor", "middle")
+                .attr("x", (d:any) => { return (d.data.width / 2 * -1) + 34; })
+                .attr("y", 18)
+                .style("text-anchor", "left")
                 .attr("class", "dark-text")
                 .text((d:any) => { return d.data.name.replace("&lsquo;", "'"); });
 

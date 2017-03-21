@@ -32,11 +32,13 @@ class TreeNode {
 
     public getDetails(parent?: string):any {
         var item:IItem = RecipeManager.getItem(this.item_id);
-        var data:{id: string, item: number, name: string, icon: string, parent?: string, children?: Array<any>} = {
+        var data:{id: string, item: number, name: string, icon: string, rarity: string, width: number, parent?: string, children?: Array<any>} = {
             id: this.id,
             item: this.item_id,
             name: item.name,
-            icon: item.icon
+            icon: item.icon,
+            rarity: item.rarity.toLowerCase(),
+            width: item.name.length * 8 + 40
         };
         if (parent) {
             data.parent = parent;
