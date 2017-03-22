@@ -1,0 +1,26 @@
+@display-width: 750;
+@display-left: @display-width / 2;
+
+
+#about-scope {
+    position: absolute;
+    top: 0px;
+    height: 100%;
+    left: 50%;
+
+    #scope-content {
+        top: 0px;
+        height: 100%;
+        width: @display-width * 1px;
+        margin-left: @display-left * -1px;
+        background-color: white;
+        color: black;
+        padding: 15px;
+        line-height: 1.5rem;
+
+        img {
+            padding-right: 2px;
+            margin-bottom: 1px;
+        }
+    }
+}

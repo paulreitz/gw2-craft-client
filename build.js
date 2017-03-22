@@ -12,6 +12,8 @@
         "knockout",
         "d3",
         "text",
+        "text!components/about/main/main.html",
+        "components/about/main/main",
         "text!components/app/app/app.html",
         "components/app/app/app",
         "text!components/app/paging/paging.html",
