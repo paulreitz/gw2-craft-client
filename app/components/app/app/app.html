@@ -2,7 +2,7 @@
     <header class="dark-background light-text">
         <span class="title" data-bind="text:title"></span>
         <nav>
-            <span class="info-link medium-dark-border">?</span>
+            <span class="info-link medium-dark-border" data-bind="click: function(e) { openAbout(); }">?</span>
         </nav>
     </header>
     <div class="search-panel" data-bind="component: 'app-search'"></div>
