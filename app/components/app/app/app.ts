@@ -9,6 +9,10 @@ class AppViewModel {
     showRecipe = RecipeManager.showWindow;
     showAbout = AboutManager.showWindow;
 
+    openAbout = () => {
+        AboutManager.showWindow(true);
+    }
+
 }
 
 export = AppViewModel;

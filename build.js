@@ -14,6 +14,8 @@
         "text",
         "text!components/about/main/main.html",
         "components/about/main/main",
+        "text!components/about/scope/scope.html",
+        "components/about/scope/scope",
         "text!components/app/app/app.html",
         "components/app/app/app",
         "text!components/app/paging/paging.html",
